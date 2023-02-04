@@ -71,16 +71,16 @@ End
 
 Public Sub Button1_Click()
   
-  If TableView1.Current Then 
+
+  If TableView1.Current Then
     If $current Then 
       Try $current.Close
     Endif
     $current = New FMain
     $current.setSettingName(TableView1[TableView1.Row, 1].Text)
     $current.Show
-    
   Else 
-    Button1.Tooltip = "Choose a Item!"
+    Button1.Tooltip = "choose a Item!"
   Endif
   
 End
