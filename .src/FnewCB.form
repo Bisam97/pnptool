@@ -1,0 +1,32 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,51,15)
+  { Label1 Label
+    MoveScaled(1,1,13,3)
+    Text = ("Name")
+  }
+  { TextBox1 TextBox
+    MoveScaled(1,4,24,4)
+  }
+  { Label2 Label
+    MoveScaled(26,1,18,3)
+    Text = ("Angrifs Modifier")
+  }
+  { ValueBox1 ValueBox
+    MoveScaled(26,4,24,4)
+  }
+  { Button1 Button
+    MoveScaled(19,9,18,4)
+    Text = ("Create Checkbox")
+  }
+  { Button2 Button
+    MoveScaled(1,9,18,4)
+    Text = ("Remove Checkbox")
+  }
+  { ToggleButton1 ToggleButton
+    MoveScaled(37,9,13,4)
+    Text = ("Angriff")
+    Picture = Picture["icon:/24/rotate-left"]
+  }
+}

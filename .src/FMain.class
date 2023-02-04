@@ -2,6 +2,10 @@
 
 Private $Schaden As FSchaden
 Private $s As Settings
+Private $Checkboxes As CheckBox[]
+Private $edit As Boolean
+Private $Fncb As FnewCB
+Private $ANGmod As Integer
 
 Public Sub SpinBox1_Change()
   
@@ -9,15 +13,7 @@ Public Sub SpinBox1_Change()
   
   i = SpinBox1.Value
   i += ValueBox1.Value
-  If CheckBox1.Value Then
-    i += 3
-  Endif
-  If CheckBox2.Value Then
-    i += 1
-  Endif
-  If CheckBox3.Value Then 
-    i += 10
-  Endif
+  i += $ANGmod
   
   Label1.Text = "Angriff ist: " & i
   
@@ -61,11 +57,18 @@ Public Sub Form_Open()
   $Schaden.X = Me.X - $Schaden.W
   $Schaden.Y = Me.Y
   
+  LoadForm()
+  
   '$s = New Settings(Null, "OnePicePnP Angriff Calc")
   $Schaden.setFmain(Me)
-  ValueBox1.Value = $s["Ang/Wert", 0]
-  ValueBox2.Value = $s["Ang/Critrange", 20]
-  $Schaden.setWisCrit($s["Schaden/WisMod", 0], $s["Schaden/CritMod", 1])
+  $Schaden.setSetting($s)
+  $Schaden.LoadForm()
+  '$Schaden.setWisCrit($s["Schaden/WisMod", 0], $s["Schaden/CritMod", 1])
+  
+  If $edit Then
+    $Fncb.setFschaden($Schaden)
+    $Fncb.Show
+  Endif
   
 End
 
@@ -85,7 +88,7 @@ End
 
 Public Sub setSettingName(path As String)
   
-  $s = New Settings(Path, "OnePicePnP Angriff Calc")
+  $s = New Settings(Path, "OnePicePnP Angriff Calc File V2")
   
 End
 
@@ -93,12 +96,126 @@ Public Sub SaveForms()
   
   Dim i As Integer[]
   
-  i = $Schaden.getWisCrit()
+  'i = $Schaden.getWisCrit()
   $s["Ang/Wert"] = ValueBox1.Value
   $s["Ang/Critrange"] = ValueBox2.Value
+  $s["Ang/CheckBoxes"] = saveCB()
+  $Schaden.saveForms
+  '$s["Schaden/WisMod"] = i[0]
+  '$s["Schaden/CritMod"] = i[1]
   
-  $s["Schaden/WisMod"] = i[0]
-  $s["Schaden/CritMod"] = i[1]
+  $s["Version"] = Application.Version
   $s.Save()
+  
+End
+
+Public Sub LoadForm()
+  
+  Dim sjson As String
+  Dim saCheckboxes As String[][]
+  Dim sarray As String[]
+  Dim cb As CheckBox
+  Dim i As Integer
+  
+  $Checkboxes = New CheckBox[]
+  
+  ValueBox1.Value = $s["Ang/Wert", 0]
+  ValueBox2.Value = $s["Ang/Critrange", 20]
+  sjson = $s["Ang/CheckBoxes", "[[\"Motivation\",3],[\"PBS\",1],[\"Lock On\",10]]"]
+  saCheckboxes = JSON.FromString(sjson)
+  
+  For Each sarray In saCheckboxes
+    cb = New CheckBox(ScrollView1) As "CheckBox"
+    cb.Text = sarray[0]
+    cb.Tag = CInt(sarray[1])
+    cb.x = 5
+    cb.Y = i
+    cb.h = 32
+    cb.w = 192
+    i += 32
+    $Checkboxes.Add(cb)
+  Next
+  ''[[Name,Tag],[Name,Tag]]
+  
+End
+
+Public Sub setEdit()
+  
+  $edit = True
+  $Fncb = New FnewCB
+  FSchaden.setEdit()
+  $Fncb.setFmain(Me)
+  
+End
+
+Public Sub newCB(Arg As String[])
+  
+  Dim i As Integer
+  Dim cb As CheckBox
+  
+  If $edit Then
+    cb = New CheckBox(ScrollView1) As "CheckBox"
+    i = 32 * $Checkboxes.Length
+    cb.Text = Arg[0]
+    cb.Tag = CInt(Arg[1])
+    cb.x = 5
+    cb.Y = i 
+    cb.h = 32
+    cb.w = 192
+    
+    $Checkboxes.Add(cb)
+  Endif
+  
+End
+
+Public Sub rmCB(Arg As String)
+  
+  Dim cb As CheckBox
+  Dim i As Integer
+  
+  If $edit Then
+    For Each cb In $Checkboxes
+      cb.Y = i
+      If cb.Text = Arg Then 
+        $Checkboxes.Remove($Checkboxes.Find(cb))
+        cb.Delete
+        i -= 32
+        
+      Endif 
+      
+      i += 32
+    Next
+  Endif
+  
+End
+
+Public Sub CheckBox_Click()
+  
+  Dim cb As CheckBox
+  
+  cb = Last
+  
+  If cb.Value Then
+    $ANGmod += CInt(cb.Tag)
+  Else 
+    $ANGmod -= CInt(cb.Tag)
+  Endif
+  
+End
+
+Public Sub saveCB() As String
+  
+  Dim a As New String[]
+  
+  Dim cb As CheckBox
+  Dim b As New String[][]
+  
+  For Each cb In $Checkboxes
+    a = New String[]
+    a.Add(cb.Text)
+    a.Add(cb.Tag)
+    b.Add(a)
+  Next
+  Return JSON.ToString(b)
   
 End
