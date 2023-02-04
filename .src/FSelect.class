@@ -1,0 +1,80 @@
+' Gambas class file
+
+Private $current As FMain
+
+Public Sub Form_Open()
+  
+  Dim s As String
+  Dim i As Integer
+  
+  TableView1.Mode = Select.Single
+  TableView1.Header = TableView1.Horizontal
+  
+  TableView1.Columns.Count = 2 
+  TableView1.Rows.Count = 0
+  
+  TableView1.Columns[0].Title = "Waffen Name"
+  TableView1.Columns[1].Title = "Path"
+  
+  If Not Exist(User.Home &/ ".config/pnp") Then Mkdir User.Home &/ ".config/pnp"
+  For Each s In Dir(User.Home &/ ".config/pnp")
+    i = TableView1.Rows.Count
+    TableView1.Rows.Count += 1
+    TableView1[i, 0].text = File.BaseName(s)
+    TableView1[i, 1].text = User.Home &/ ".config/pnp" &/ s
+  Next
+  
+End
+
+Public Sub Button3_Click()
+  
+  If $current Then 
+    Try $current.Close
+  Endif
+  $current = New FMain
+  $current.setSettingName(Null)
+  $current.Show
+  
+End
+
+Public Sub Button2_Click()
+  
+  Dim i As Integer
+  Dim s As String
+  
+  If Not Exist(User.Home &/ ".config/pnp") Then Mkdir User.Home &/ ".config/pnp"
+  Dialog.Title = "Save Conf"
+  Dialog.Path = User.Home &/ ".config/pnp/"
+  Dialog.Filter = ["*.conf ", "Configdateien", "*", "Alle Dateien"]
+  If Dialog.SaveFile() Then 
+    
+  Else 
+    s = Dialog.Path
+    
+    $current.setSettingName(s)
+    $current.SaveForms
+    i = TableView1.Rows.Count
+    TableView1.Rows.Count = i + 1
+    TableView1[i, 0].Text = File.BaseName(s)
+    TableView1[i, 1].Text = s
+    
+  Endif
+  
+End
+
+Public Sub Form_Close()
+  
+  $current.Close
+  
+End
+
+Public Sub Button1_Click()
+  
+  If $current Then 
+    Try $current.Close
+  Endif
+  $current = New FMain
+  $current.setSettingName(TableView1[TableView1.Row, 1].Text)
+  $current.Show
+  
+End

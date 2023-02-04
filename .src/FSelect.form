@@ -1,0 +1,22 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,37,42)
+  { TableView1 TableView
+    MoveScaled(0,0,37,38)
+  }
+  { Button1 Button
+    MoveScaled(0,38,13,4)
+    Text = ("Open")
+    Picture = Picture["icon:/24/open"]
+  }
+  { Button2 Button
+    MoveScaled(24,38,13,4)
+    Text = ("Save")
+    Picture = Picture["icon:/24/save"]
+  }
+  { Button3 Button
+    MoveScaled(13,38,11,4)
+    Picture = Picture["icon:/24/new"]
+  }
+}

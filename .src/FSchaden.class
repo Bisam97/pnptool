@@ -1,6 +1,7 @@
 ' Gambas class file
 
 Private $isClose As Boolean
+Private $fmain As FMain
 
 Public Sub CheckBox4_Click()
   
@@ -75,12 +76,18 @@ End
 Public Sub Form_Close()
   
   $isClose = True
-  FMain.Close
+  $fmain.Close
   
 End
 
 Public Sub isClose() As Boolean
   
   Return $isClose
+  
+End
+
+Public Sub setFmain(fmain As FMain)
+  
+  $fmain = fmain
   
 End

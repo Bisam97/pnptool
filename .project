@@ -1,5 +1,5 @@
 # Gambas Project File 3.0
-Startup=FMain
+Startup=FSelect
 Version=0.0.2
 Component=gb.image
 Component=gb.gui
