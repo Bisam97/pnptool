@@ -64,17 +64,21 @@ End
 
 Public Sub Form_Close()
   
-  $current.Close
+  Try $current.Close
   
 End
 
 Public Sub Button1_Click()
   
-  If $current Then 
-    Try $current.Close
+  If TableView1.Current Then
+    If $current Then 
+      Try $current.Close
+    Endif
+    $current = New FMain
+    $current.setSettingName(TableView1[TableView1.Row, 1].Text)
+    $current.Show
+  Else 
+    Button1.Tooltip = "choose a Item!"
   Endif
-  $current = New FMain
-  $current.setSettingName(TableView1[TableView1.Row, 1].Text)
-  $current.Show
   
 End
