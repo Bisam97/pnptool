@@ -1,6 +1,7 @@
 ' Gambas class file
 
 Private $Schaden As FSchaden
+Private $s As Settings
 
 Public Sub SpinBox1_Change()
   
@@ -60,10 +61,31 @@ Public Sub Form_Open()
   $Schaden.X = Me.X - $Schaden.W
   $Schaden.Y = Me.Y
   
+  $s = New Settings(Null, "OnePicePnP Angriff Calc")
+  
+  ValueBox1.Value = $s["Ang/Wert", 0]
+  ValueBox2.Value = $s["Ang/Critrange", 20]
+  $Schaden.setWisCrit($s["Schaden/WisMod", 0], $s["Schaden/CritMod", 1])
+  
 End
 
 Public Sub Button1_Click()
   
   SpinBox1_Change()
+  
+End
+
+Public Sub Form_Close()
+  
+  Dim i As Integer[]
+  
+  i = $Schaden.getWisCrit()
+  $s["Ang/Wert"] = ValueBox1.Value
+  $s["Ang/Critrange"] = ValueBox2.Value
+  
+  $s["Schaden/WisMod"] = i[0]
+  $s["Schaden/CritMod"] = i[1]
+  
+  If Not $Schaden.isClose() Then $Schaden.Close
   
 End

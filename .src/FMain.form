@@ -2,7 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,64,44)
-  Text = ("PBS")
+  Text = ("Angriff")
   { TextLabel1 TextLabel
     MoveScaled(2,2,15,3)
     Text = ("Würfelergebnis")
@@ -51,5 +51,6 @@
   }
   { Button1 Button
     MoveScaled(11,6,13,4)
+    Text = ("Calc")
   }
 }

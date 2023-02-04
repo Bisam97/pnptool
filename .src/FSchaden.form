@@ -2,6 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,64,64)
+  Text = ("Schaden")
   { TextLabel1 TextLabel
     MoveScaled(2,5,12,3)
     Text = ("Würfelwert")

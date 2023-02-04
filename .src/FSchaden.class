@@ -1,5 +1,7 @@
 ' Gambas class file
 
+Private $isClose As Boolean
+
 Public Sub CheckBox4_Click()
   
   If CheckBox3.Value Then
@@ -54,5 +56,31 @@ End
 Public Sub unsetcrit()
   
   CheckBox5.Value = False
+  
+End
+
+Public Sub setWisCrit(wis As Integer, crit As Integer)
+  
+  ValueBox1.Value = wis
+  ValueBox2.Value = crit
+  
+End
+
+Public Sub getWisCrit() As Integer[]
+  
+  Return [ValueBox1.Value, ValueBox2.Value]
+  
+End
+
+Public Sub Form_Close()
+  
+  $isClose = True
+  FMain.Close
+  
+End
+
+Public Sub isClose() As Boolean
+  
+  Return $isClose
   
 End
