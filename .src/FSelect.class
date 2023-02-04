@@ -33,6 +33,7 @@ Public Sub Button3_Click()
   Endif
   $current = New FMain
   $current.setSettingName(Null)
+  $current.setEdit
   $current.Show
   
 End
