@@ -17,11 +17,16 @@
     MoveScaled(26,4,24,4)
   }
   { Button1 Button
-    MoveScaled(26,9,18,4)
+    MoveScaled(19,9,18,4)
     Text = ("Create Checkbox")
   }
   { Button2 Button
-    MoveScaled(7,9,18,4)
+    MoveScaled(1,9,18,4)
     Text = ("Remove Checkbox")
+  }
+  { ToggleButton1 ToggleButton
+    MoveScaled(37,9,13,4)
+    Text = ("Angriff")
+    Picture = Picture["icon:/24/rotate-left"]
   }
 }

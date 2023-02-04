@@ -4,7 +4,7 @@
   MoveScaled(0,0,64,64)
   Text = ("Schaden")
   { TextLabel1 TextLabel
-    MoveScaled(2,5,12,3)
+    MoveScaled(3,5,12,3)
     Text = ("Würfelwert")
   }
   { SpinBox1 SpinBox
@@ -13,45 +13,48 @@
     Value = 1
   }
   { CheckBox1 CheckBox
-    MoveScaled(26,2,24,4)
+    MoveScaled(3,27,24,4)
     Text = ("Hutz Effekt")
   }
   { CheckBox2 CheckBox
-    MoveScaled(26,5,24,4)
+    MoveScaled(3,30,24,4)
     Text = ("PBS")
   }
   { CheckBox3 CheckBox
-    MoveScaled(26,8,24,4)
+    MoveScaled(3,33,24,4)
     Text = ("+1 Spitzer Pfeil")
   }
   { CheckBox4 CheckBox
-    MoveScaled(26,11,24,4)
+    MoveScaled(3,36,24,4)
     Text = ("+2 Sehr Spitzer Pfeil")
   }
   { TextLabel2 TextLabel
-    MoveScaled(2,20,15,3)
+    MoveScaled(3,14,15,3)
     Text = ("Wis")
   }
   { ValueBox1 ValueBox
-    MoveScaled(2,23,11,4)
+    MoveScaled(3,17,11,4)
   }
   { Button1 Button
     MoveScaled(13,8,11,4)
     Text = ("Calc")
   }
   { CheckBox5 CheckBox
-    MoveScaled(26,14,24,4)
+    MoveScaled(3,22,24,4)
     Text = ("CRIT")
   }
   { ValueBox2 ValueBox
-    MoveScaled(31,23,8,4)
+    MoveScaled(19,17,8,4)
   }
   { TextLabel3 TextLabel
-    MoveScaled(20,24,9,3)
+    MoveScaled(19,14,9,3)
     Text = ("Crit mod")
   }
   { TextLabel4 TextLabel
-    MoveScaled(6,36,41,18)
+    MoveScaled(11,45,41,18)
     Font = Font["DejaVu,+7"]
+  }
+  { ScrollView1 ScrollView
+    MoveScaled(39,1,24,36)
   }
 }

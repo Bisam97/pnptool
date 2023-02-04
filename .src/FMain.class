@@ -61,7 +61,14 @@ Public Sub Form_Open()
   
   '$s = New Settings(Null, "OnePicePnP Angriff Calc")
   $Schaden.setFmain(Me)
-  $Schaden.setWisCrit($s["Schaden/WisMod", 0], $s["Schaden/CritMod", 1])
+  $Schaden.setSetting($s)
+  $Schaden.LoadForm()
+  '$Schaden.setWisCrit($s["Schaden/WisMod", 0], $s["Schaden/CritMod", 1])
+  
+  If $edit Then
+    $Fncb.setFschaden($Schaden)
+    $Fncb.Show
+  Endif
   
 End
 
@@ -81,7 +88,7 @@ End
 
 Public Sub setSettingName(path As String)
   
-  $s = New Settings(Path, "OnePicePnP Angriff Calc")
+  $s = New Settings(Path, "OnePicePnP Angriff Calc File V2")
   
 End
 
@@ -89,14 +96,15 @@ Public Sub SaveForms()
   
   Dim i As Integer[]
   
-  i = $Schaden.getWisCrit()
+  'i = $Schaden.getWisCrit()
   $s["Ang/Wert"] = ValueBox1.Value
   $s["Ang/Critrange"] = ValueBox2.Value
   $s["Ang/CheckBoxes"] = saveCB()
-  $s["Version"] = Application.Version
+  $Schaden.saveForms
+  '$s["Schaden/WisMod"] = i[0]
+  '$s["Schaden/CritMod"] = i[1]
   
-  $s["Schaden/WisMod"] = i[0]
-  $s["Schaden/CritMod"] = i[1]
+  $s["Version"] = Application.Version
   $s.Save()
   
 End
@@ -135,8 +143,8 @@ Public Sub setEdit()
   
   $edit = True
   $Fncb = New FnewCB
+  FSchaden.setEdit()
   $Fncb.setFmain(Me)
-  $Fncb.Show
   
 End
 

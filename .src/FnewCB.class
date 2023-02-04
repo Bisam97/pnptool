@@ -1,10 +1,7 @@
 ' Gambas class file
 
 Private $fmain As FMain
-
-Public Sub Form_Open()
-  
-End
+Private $fschaden As FSchaden
 
 Public Sub setFmain(fmain As FMain)
   
@@ -24,6 +21,49 @@ End
 
 Public Sub Button2_Click()
   
-  $fmain.rmCB(TextBox1.Text)
+  If ToggleButton1.Text = "Angriff" Then
+    $fmain.rmCB(TextBox1.Text)
+  Else If ToggleButton1.Text = "Schaden" Then 
+    $fschaden.rmCB(TextBox1.Text)
+  Endif
+  
+End
+
+Public Sub setFschaden(Fschaden As FSchaden)
+  
+  $fschaden = Fschaden
+  
+End
+
+Public Sub ToggleButton1_Click()
+  
+  If Not ToggleButton1.Value And $fmain Then
+    ToggleButton1.Text = "Angriff"
+    ToggleButton1.Picture = Picture.Load("icon:/24/rotate-left")
+    Label2.Text = "Angriffs Modifier"
+    $fschaden.Hide()
+    $fmain.show()
+  Else If ToggleButton1.Value And $fschaden
+    ToggleButton1.Text = "Schaden"
+    ToggleButton1.Picture = Picture.Load("icon:/24/rotate-right")
+    Label2.Text = "Schaden Modifier"
+    $fmain.Hide()
+    $fschaden.Show()
+  Endif
+  
+  If $fmain Then
+    $fmain.x = 100
+    Me.x = 100 + $fmain.X + $fmain.w
+  Endif
+  If $fschaden Then
+    $fschaden.x = Me.X + Me.w
+  Endif
+  Print $fmain.x
+  Print Me.X
+  Print $fschaden.x
+  
+End
+
+Public Sub Form_Open()
   
 End

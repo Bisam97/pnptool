@@ -2,25 +2,10 @@
 
 Private $isClose As Boolean
 Private $fmain As FMain
-
-Public Sub CheckBox4_Click()
-  
-  If CheckBox3.Value Then
-    CheckBox3.Value = False
-  Endif
-  ' CheckBox4.Value = True
-  
-End
-
-Public Sub CheckBox3_Click()
-  
-  If CheckBox4.Value Then
-    CheckBox4.Value = False
-    
-  Endif
-  ' CheckBox3.Value = True
-  
-End
+Private $edit As Boolean
+Private $s As Settings
+Private $Checkboxes As CheckBox[]
+Private $DMGmod As Integer
 
 Public Sub Button1_Click()
   
@@ -28,18 +13,7 @@ Public Sub Button1_Click()
   
   i = SpinBox1.Value
   i += ValueBox1.Value
-  If CheckBox1.Value Then 
-    i += 2
-  Endif
-  If CheckBox2.Value Then
-    i += 5
-  Endif
-  If CheckBox3.Value Then 
-    i += 1
-  Endif
-  If CheckBox4.Value Then 
-    i += 2
-  Endif
+  i += $DMGmod
   If CheckBox5.Value Then
     i *= ValueBox2.Value
   Endif
@@ -89,5 +63,127 @@ End
 Public Sub setFmain(fmain As FMain)
   
   $fmain = fmain
+  
+End
+
+Public Sub setEdit()
+  
+  $edit = True
+  
+End
+
+Public Sub setSetting(sSettings As Settings)
+  
+  $s = sSettings
+  
+End
+
+Public Sub LoadForm()
+  
+  Dim sjson As String
+  Dim saCheckboxes As String[][]
+  Dim sarray As String[]
+  Dim cb As CheckBox
+  Dim i As Integer
+  
+  $Checkboxes = New CheckBox[]
+  
+  ValueBox1.Value = $s["Schaden/WisMod", 0]
+  ValueBox2.Value = $s["Schaden/CritMod", 1]
+  sjson = $s["Schaden/CheckBoxes", "[[\"Hutz Effekt\",2],[\"PBS\",5],[\"Spitzer Pfeil\",1],[\"Sehr Spitzer Pfeil\",2]]"]
+  saCheckboxes = JSON.FromString(sjson)
+  
+  For Each sarray In saCheckboxes
+    cb = New CheckBox(ScrollView1) As "CheckBox"
+    cb.Text = sarray[0]
+    cb.Tag = CInt(sarray[1])
+    cb.x = 5
+    cb.Y = i
+    cb.h = 32
+    cb.w = 192
+    i += 32
+    $Checkboxes.Add(cb)
+  Next
+  ''[[Name,Tag],[Name,Tag]]
+  
+End
+
+Public Sub newCB(Arg As String[])
+  
+  Dim i As Integer
+  Dim cb As CheckBox
+  
+  If $edit Then
+    cb = New CheckBox(ScrollView1) As "CheckBox"
+    i = 32 * $Checkboxes.Length
+    cb.Text = Arg[0]
+    cb.Tag = CInt(Arg[1])
+    cb.x = 5
+    cb.Y = i 
+    cb.h = 32
+    cb.w = 192
+    
+    $Checkboxes.Add(cb)
+  Endif
+  
+End
+
+Public Sub rmCB(Arg As String)
+  
+  Dim cb As CheckBox
+  Dim i As Integer
+  
+  If $edit Then
+    For Each cb In $Checkboxes
+      cb.Y = i
+      If cb.Text = Arg Then 
+        $Checkboxes.Remove($Checkboxes.Find(cb))
+        cb.Delete
+        i -= 32
+        
+      Endif 
+      
+      i += 32
+    Next
+  Endif
+  
+End
+
+Public Sub CheckBox_Click()
+  
+  Dim cb As CheckBox
+  
+  cb = Last
+  
+  If cb.Value Then
+    $DMGmod += CInt(cb.Tag)
+  Else 
+    $DMGmod -= CInt(cb.Tag)
+  Endif
+  
+End
+
+Public Sub saveCB() As String
+  
+  Dim a As New String[]
+  
+  Dim cb As CheckBox
+  Dim b As New String[][]
+  
+  For Each cb In $Checkboxes
+    a = New String[]
+    a.Add(cb.Text)
+    a.Add(cb.Tag)
+    b.Add(a)
+  Next
+  Return JSON.ToString(b)
+  
+End
+
+Public Sub SaveForms()
+  
+  $s["Schaden/WisMod"] = ValueBox1.Value 
+  $s["Schaden/CritMod"] = ValueBox2.Value 
+  $s["Schaden/CheckBoxes"] = saveCB()
   
 End
