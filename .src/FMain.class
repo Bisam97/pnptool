@@ -94,15 +94,10 @@ End
 
 Public Sub SaveForms()
   
-  Dim i As Integer[]
-  
-  'i = $Schaden.getWisCrit()
   $s["Ang/Wert"] = ValueBox1.Value
   $s["Ang/Critrange"] = ValueBox2.Value
   $s["Ang/CheckBoxes"] = saveCB()
   $Schaden.saveForms
-  '$s["Schaden/WisMod"] = i[0]
-  '$s["Schaden/CritMod"] = i[1]
   
   $s["Version"] = Application.Version
   $s.Save()

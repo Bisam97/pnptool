@@ -12,22 +12,6 @@
     MinValue = 1
     Value = 1
   }
-  { CheckBox1 CheckBox
-    MoveScaled(3,27,24,4)
-    Text = ("Hutz Effekt")
-  }
-  { CheckBox2 CheckBox
-    MoveScaled(3,30,24,4)
-    Text = ("PBS")
-  }
-  { CheckBox3 CheckBox
-    MoveScaled(3,33,24,4)
-    Text = ("+1 Spitzer Pfeil")
-  }
-  { CheckBox4 CheckBox
-    MoveScaled(3,36,24,4)
-    Text = ("+2 Sehr Spitzer Pfeil")
-  }
   { TextLabel2 TextLabel
     MoveScaled(3,14,15,3)
     Text = ("Wis")

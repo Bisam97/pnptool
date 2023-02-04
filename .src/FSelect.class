@@ -71,7 +71,6 @@ End
 
 Public Sub Button1_Click()
   
-
   If TableView1.Current Then
     If $current Then 
       Try $current.Close
