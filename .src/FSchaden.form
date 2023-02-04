@@ -1,0 +1,56 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,64)
+  { TextLabel1 TextLabel
+    MoveScaled(2,5,12,3)
+    Text = ("Würfelwert")
+  }
+  { SpinBox1 SpinBox
+    MoveScaled(3,8,9,4)
+    MinValue = 1
+    Value = 1
+  }
+  { CheckBox1 CheckBox
+    MoveScaled(26,2,24,4)
+    Text = ("Hutz Effekt")
+  }
+  { CheckBox2 CheckBox
+    MoveScaled(26,5,24,4)
+    Text = ("PBS")
+  }
+  { CheckBox3 CheckBox
+    MoveScaled(26,8,24,4)
+    Text = ("+1 Spitzer Pfeil")
+  }
+  { CheckBox4 CheckBox
+    MoveScaled(26,11,24,4)
+    Text = ("+2 Sehr Spitzer Pfeil")
+  }
+  { TextLabel2 TextLabel
+    MoveScaled(2,20,15,3)
+    Text = ("Wis")
+  }
+  { ValueBox1 ValueBox
+    MoveScaled(2,23,11,4)
+  }
+  { Button1 Button
+    MoveScaled(13,8,11,4)
+    Text = ("Calc")
+  }
+  { CheckBox5 CheckBox
+    MoveScaled(26,14,24,4)
+    Text = ("CRIT")
+  }
+  { ValueBox2 ValueBox
+    MoveScaled(31,23,8,4)
+  }
+  { TextLabel3 TextLabel
+    MoveScaled(20,24,9,3)
+    Text = ("Crit mod")
+  }
+  { TextLabel4 TextLabel
+    MoveScaled(6,36,41,18)
+    Font = Font["DejaVu,+7"]
+  }
+}

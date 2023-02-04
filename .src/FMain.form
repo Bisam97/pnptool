@@ -1,0 +1,55 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,44)
+  Text = ("PBS")
+  { TextLabel1 TextLabel
+    MoveScaled(2,2,15,3)
+    Text = ("Würfelergebnis")
+  }
+  { SpinBox1 SpinBox
+    MoveScaled(2,6,9,4)
+    MinValue = 1
+    MaxValue = 20
+    Value = 1
+  }
+  { CheckBox1 CheckBox
+    MoveScaled(24,1,24,4)
+    Text = ("Motivation")
+  }
+  { CheckBox2 CheckBox
+    MoveScaled(24,5,24,4)
+    Text = ("PBS")
+  }
+  { CheckBox3 CheckBox
+    MoveScaled(24,9,24,4)
+    Text = ("Lock On")
+  }
+  { ValueBox1 ValueBox
+    MoveScaled(1,16,24,4)
+  }
+  { TextLabel2 TextLabel
+    MoveScaled(1,13,24,3)
+    Text = ("Range Shot Wert")
+  }
+  { CheckBox4 CheckBox
+    MoveScaled(1,21,24,4)
+    Text = ("Disable Edit")
+  }
+  { ValueBox2 ValueBox
+    MoveScaled(26,16,24,4)
+  }
+  { TextLabel3 TextLabel
+    MoveScaled(27,13,23,3)
+    Text = ("Crit ab")
+  }
+  { LCDLabel1 LCDLabel
+    MoveScaled(18,20,41,14)
+  }
+  { Label1 Label
+    MoveScaled(22,34,24,9)
+  }
+  { Button1 Button
+    MoveScaled(11,6,13,4)
+  }
+}

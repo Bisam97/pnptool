@@ -1,0 +1,58 @@
+' Gambas class file
+
+Public Sub CheckBox4_Click()
+  
+  If CheckBox3.Value Then
+    CheckBox3.Value = False
+  Endif
+  ' CheckBox4.Value = True
+  
+End
+
+Public Sub CheckBox3_Click()
+  
+  If CheckBox4.Value Then
+    CheckBox4.Value = False
+    
+  Endif
+  ' CheckBox3.Value = True
+  
+End
+
+Public Sub Button1_Click()
+  
+  Dim i As Integer
+  
+  i = SpinBox1.Value
+  i += ValueBox1.Value
+  If CheckBox1.Value Then 
+    i += 2
+  Endif
+  If CheckBox2.Value Then
+    i += 5
+  Endif
+  If CheckBox3.Value Then 
+    i += 1
+  Endif
+  If CheckBox4.Value Then 
+    i += 2
+  Endif
+  If CheckBox5.Value Then
+    i *= ValueBox2.Value
+  Endif
+  
+  TextLabel4.Text = "Schaden ist: " & i
+  
+End
+
+Public Sub setcrit()
+  
+  CheckBox5.Value = True
+  
+End
+
+Public Sub unsetcrit()
+  
+  CheckBox5.Value = False
+  
+End
