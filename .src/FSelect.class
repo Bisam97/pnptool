@@ -1,9 +1,6 @@
 ' Gambas class file
 
 Private $current As FMain
-Private $fnW As FNewWeapon 
-Public Ang As String 
-Public Dmg As String
 
 Public Sub Form_Open()
   
@@ -31,16 +28,13 @@ End
 
 Public Sub Button3_Click()
   
-  $fnW = New FNewWeapon 
-  $fnW.Show() 
-  $fnW.setSelect(Me)
   If $current Then 
     Try $current.Close
   Endif
   $current = New FMain
   $current.setSettingName(Null)
   $current.setEdit
-  ' $current.Show
+  $current.Show
   
 End
 
@@ -104,11 +98,4 @@ Public Sub Button4_Click()
     Button1.Tooltip = "choose a Item!"
   Endif
   
-End
-
-Public Sub showMain() 
-  
-  $current.Show
-  $current.setArtibut(Me.Ang, Me.Dmg)
-
 End
