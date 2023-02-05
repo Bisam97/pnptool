@@ -110,5 +110,5 @@ Public Sub showMain()
   
   $current.Show
   $current.setArtibut(Me.Ang, Me.Dmg)
-
+  
 End

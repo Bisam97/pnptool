@@ -14,9 +14,12 @@ Public Sub Button1_Click()
   Dim s As Variant[]
   
   s = [TextBox1.Text, ValueBox1.Value]
-  
-  $fmain.newCB(s)
-  
+  If ToggleButton1.Text = "Angriff" Then
+    $fmain.newCB(s)
+  Else If ToggleButton1.Text = "Schaden" Then 
+    $fschaden.newCB(s)
+  Endif
+
 End
 
 Public Sub Button2_Click()
