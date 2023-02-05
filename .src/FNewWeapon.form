@@ -1,0 +1,90 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,45)
+  { Separator1 Separator
+    MoveScaled(31,0,2,39)
+  }
+  { Frame1 Frame
+    MoveScaled(33,1,30,37)
+    Text = ("Schaden")
+    { Label1 TextLabel
+      MoveScaled(2,4,26,5)
+      Text = ("Auf Welchem Wert bassiert der Schaden?")
+    }
+    { RadioButton1 RadioButton
+      MoveScaled(2,10,24,4)
+      Tag = "0"
+      Text = ("STR (Strength)")
+      Value = True
+    }
+    { RadioButton2 RadioButton
+      MoveScaled(2,14,24,4)
+      Tag = "1"
+      Text = ("CON (Constitution)")
+    }
+    { RadioButton3 RadioButton
+      MoveScaled(2,18,24,4)
+      Tag = "2"
+      Text = ("DEX (Dexterity)")
+    }
+    { RadioButton4 RadioButton
+      MoveScaled(2,22,24,4)
+      Tag = "3"
+      Text = ("INT (Intelligence)")
+    }
+    { RadioButton5 RadioButton
+      MoveScaled(2,26,24,4)
+      Tag = "4"
+      Text = ("WIS (Wisdom)")
+    }
+    { RadioButton6 RadioButton
+      MoveScaled(2,30,24,4)
+      Tag = "5"
+      Text = ("CHA (Charisma)")
+    }
+  }
+  { Frame2 Frame
+    MoveScaled(1,1,30,37)
+    Text = ("Angriff")
+    { TextLabel1 TextLabel
+      MoveScaled(2,4,26,5)
+      Text = ("Auf Welchem Wert bassiert der Angriff?")
+    }
+    { RadioButton7 RadioButton
+      MoveScaled(3,10,24,4)
+      Tag = "2"
+      Text = ("Ranged Shot")
+      Value = True
+    }
+    { RadioButton8 RadioButton
+      MoveScaled(3,14,24,4)
+      Tag = "2"
+      Text = ("Weapon Strike")
+    }
+    { RadioButton9 RadioButton
+      MoveScaled(3,18,24,4)
+      Tag = "2"
+      Text = ("Unarmed Strike")
+    }
+    { RadioButton10 RadioButton
+      MoveScaled(3,22,3,4)
+    }
+    { TextBox1 TextBox
+      MoveScaled(6,22,21,4)
+    }
+  }
+  { Separator2 Separator
+    MoveScaled(-1,38,66,1)
+  }
+  { Button1 Button
+    MoveScaled(47,40,16,4)
+    Text = ("weiter")
+    Picture = Picture["icon:/24/ok"]
+  }
+  { Button2 Button
+    MoveScaled(1,40,16,4)
+    Text = ("abbrechen")
+    Picture = Picture["icon:/24/delete"]
+  }
+}

@@ -1,0 +1,75 @@
+' Gambas class file
+
+Private $fselect As FSelect
+
+Public Sub Button2_Click()
+  
+  Me.Close()
+  
+End
+
+Public Sub RadioButton10_Click()
+  
+  If RadioButton10.Value Then 
+    TextBox1.Enabled = True
+  Else 
+    TextBox1.Enabled = False
+    TextBox1.Text = ""
+  Endif
+  
+End
+
+Public Sub RadioButton7_Click()
+  
+  RadioButton10_Click
+  
+End
+
+Public Sub RadioButton8_Click()
+  
+  RadioButton10_Click
+  
+End
+
+Public Sub RadioButton9_Click()
+  
+  RadioButton10_Click
+  
+End
+
+Public Sub Button1_Click()
+  
+  Select True
+    Case RadioButton1.Value
+      $fselect.Dmg = RadioButton1.Text
+    Case RadioButton2.Value
+      $fselect.Dmg = RadioButton2.Text
+    Case RadioButton3.Value
+      $fselect.Dmg = RadioButton3.Text
+    Case RadioButton4.Value
+      $fselect.Dmg = RadioButton4.Text
+    Case RadioButton5.Value
+      $fselect.Dmg = RadioButton5.Text
+    Case RadioButton6.Value
+      $fselect.Dmg = RadioButton6.Text
+  End Select
+  Select True
+    Case RadioButton7.Value
+      $fselect.Ang = RadioButton7.Text
+    Case RadioButton8.Value
+      $fselect.Ang = RadioButton8.Text
+    Case RadioButton9.Value
+      $fselect.Ang = RadioButton9.Text
+    Case RadioButton10.Value
+      $fselect.Ang = TextBox1.Text
+  End Select
+  
+  $fselect.showMain()
+  
+End
+
+Public Sub setSelect(arg As FSelect)
+  
+  $fselect = arg
+  
+End
