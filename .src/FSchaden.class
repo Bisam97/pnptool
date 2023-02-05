@@ -88,8 +88,9 @@ Public Sub LoadForm()
   
   $Checkboxes = New CheckBox[]
   
-  ValueBox1.Value = $s["Schaden/WisMod", 0]
+  ValueBox1.Value = $s["Schaden/AttributesMod", $s["Schaden/WisMod", 0]]
   ValueBox2.Value = $s["Schaden/CritMod", 1]
+  TextLabel2.Text = $s["Schaden/Attribute", "Wis"]
   sjson = $s["Schaden/CheckBoxes", "[[\"Hutz Effekt\",2],[\"PBS\",5],[\"Spitzer Pfeil\",1],[\"Sehr Spitzer Pfeil\",2]]"]
   saCheckboxes = JSON.FromString(sjson)
   
@@ -182,8 +183,15 @@ End
 
 Public Sub SaveForms()
   
-  $s["Schaden/WisMod"] = ValueBox1.Value 
+  $s["Schaden/AttributesMod"] = ValueBox1.Value 
   $s["Schaden/CritMod"] = ValueBox2.Value 
+  $s["Schaden/Attribute"] = TextLabel2.Text
   $s["Schaden/CheckBoxes"] = saveCB()
+  
+End
+
+Public Sub setArtibut(dmg As String)
+  
+  TextLabel2.Text = dmg
   
 End

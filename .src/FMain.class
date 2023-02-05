@@ -88,7 +88,7 @@ End
 
 Public Sub setSettingName(path As String)
   
-  $s = New Settings(Path, "OnePicePnP Angriff Calc File V2")
+  $s = New Settings(Path, "OnePicePnP Angriff Calc File V3")
   
 End
 
@@ -96,6 +96,7 @@ Public Sub SaveForms()
   
   $s["Ang/Wert"] = ValueBox1.Value
   $s["Ang/Critrange"] = ValueBox2.Value
+  $s["Ang/Skill"] = TextLabel2.Text
   $s["Ang/CheckBoxes"] = saveCB()
   $Schaden.saveForms
   
@@ -115,6 +116,7 @@ Public Sub LoadForm()
   $Checkboxes = New CheckBox[]
   
   ValueBox1.Value = $s["Ang/Wert", 0]
+  TextLabel2.Text = $s["Ang/Skill", "Range Shot Wert"]
   ValueBox2.Value = $s["Ang/Critrange", 20]
   sjson = $s["Ang/CheckBoxes", "[[\"Motivation\",3],[\"PBS\",1],[\"Lock On\",10]]"]
   saCheckboxes = JSON.FromString(sjson)
@@ -212,5 +214,12 @@ Public Sub saveCB() As String
     b.Add(a)
   Next
   Return JSON.ToString(b)
+  
+End
+
+Public Sub setArtibut(Ang As String, dmg As String)
+  
+  TextLabel2.Text = Ang
+  $Schaden.setArtibut(dmg)
   
 End
