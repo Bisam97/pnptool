@@ -66,6 +66,7 @@ Public Sub Form_Open()
   '$Schaden.setWisCrit($s["Schaden/WisMod", 0], $s["Schaden/CritMod", 1])
   
   If $edit Then
+    $Schaden.setEdit
     $Fncb.setFschaden($Schaden)
     $Fncb.Show
   Endif
