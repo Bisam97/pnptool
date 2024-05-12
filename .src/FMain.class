@@ -6,6 +6,7 @@ Private $Checkboxes As CheckBox[]
 Private $edit As Boolean
 Private $Fncb As FnewCB
 Private $ANGmod As Integer
+Private $newAGR As Boolean
 
 Public Sub SpinBox1_Change()
   
@@ -99,6 +100,7 @@ Public Sub SaveForms()
   $s["Ang/Critrange"] = ValueBox2.Value
   $s["Ang/Skill"] = TextLabel2.Text
   $s["Ang/CheckBoxes"] = saveCB()
+  
   $Schaden.saveForms
   
   $s["Version"] = Application.Version
