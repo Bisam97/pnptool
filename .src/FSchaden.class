@@ -6,6 +6,7 @@ Private $edit As Boolean
 Private $s As Settings
 Private $Checkboxes As CheckBox[]
 Private $DMGmod As Integer
+Private $newDMG As Boolean
 
 Public Sub Button1_Click()
   
@@ -187,6 +188,7 @@ Public Sub SaveForms()
   $s["Schaden/CritMod"] = ValueBox2.Value 
   $s["Schaden/Attribute"] = TextLabel2.Text
   $s["Schaden/CheckBoxes"] = saveCB()
+  $s.Save()
   
 End
 
