@@ -1,6 +1,6 @@
 # Gambas Project File 3.0
 Startup=FSelect
-Version=0.0.3
+Version=0.0.4
 Component=gb.image
 Component=gb.gui
 Component=gb.form
@@ -9,6 +9,8 @@ Component=gb.util.web
 TabSize=2
 Language=en_US
 Maintainer=bisam97
+Vendor=bisam97
+VendorPrefix=b97
 Address=bisam97@bisam97.de
 License=General Public License
 PackageName=pnponepice-0.0.3
