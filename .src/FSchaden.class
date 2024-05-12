@@ -192,8 +192,10 @@ Public Sub SaveForms()
   
 End
 
-Public Sub setArtibut(dmg As String)
+Public Sub setArtibut(dmg As String, newWeapon As Boolean)
   
   TextLabel2.Text = dmg
+  $newDMG = newWeapon
+  If $newDMG Then $Checkboxes.Clear()
   
 End

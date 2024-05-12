@@ -1,7 +1,7 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,64,45)
+  MoveScaled(0,0,64,52)
   { Separator1 Separator
     MoveScaled(31,0,2,39)
   }
@@ -78,13 +78,18 @@
     MoveScaled(-1,38,66,1)
   }
   { Button1 Button
-    MoveScaled(47,40,16,4)
+    MoveScaled(47,47,16,4)
     Text = ("weiter")
     Picture = Picture["icon:/24/ok"]
   }
   { Button2 Button
-    MoveScaled(1,40,16,4)
+    MoveScaled(1,47,16,4)
     Text = ("abbrechen")
     Picture = Picture["icon:/24/delete"]
+  }
+  { ComboBox1 ComboBox
+    MoveScaled(1,41,62,4)
+    ReadOnly = True
+    List = [("Empty Weapon"), ("Range Weapon (OnePice)")]
   }
 }

@@ -38,7 +38,10 @@ Public Sub RadioButton9_Click()
 End
 
 Public Sub Button1_Click()
-  
+
+  If ComboBox1.Selection.Text = "Empty Weapon" Then
+    $fselect.newweapon = True
+  Endif
   Select True
     Case RadioButton1.Value
       $fselect.Dmg = RadioButton1.Text

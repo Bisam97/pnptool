@@ -4,6 +4,7 @@ Private $current As FMain
 Private $fnW As FNewWeapon 
 Public Ang As String 
 Public Dmg As String
+Public newweapon As Boolean
 
 Public Sub Form_Open()
   
@@ -109,6 +110,6 @@ End
 Public Sub showMain() 
   
   $current.Show
-  $current.setArtibut(Me.Ang, Me.Dmg)
+  $current.setArtibut(Me.Ang, Me.Dmg, Me.newweapon)
   
 End

@@ -58,6 +58,8 @@ Public Sub Form_Open()
   $Schaden.X = Me.X - $Schaden.W
   $Schaden.Y = Me.Y
   
+  $newAGR = False
+  
   LoadForm()
   
   '$s = New Settings(Null, "OnePicePnP Angriff Calc")
@@ -220,9 +222,11 @@ Public Sub saveCB() As String
   
 End
 
-Public Sub setArtibut(Ang As String, dmg As String)
+Public Sub setArtibut(Ang As String, dmg As String, newWeapon As Boolean)
   
+  $newAGR
   TextLabel2.Text = Ang
-  $Schaden.setArtibut(dmg)
+  $Schaden.setArtibut(dmg, newWeapon)
+  If $newAGR Then $Checkboxes.Clear()
   
 End
